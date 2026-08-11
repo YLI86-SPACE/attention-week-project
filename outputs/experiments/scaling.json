@@ -1,0 +1,93 @@
+{
+  "seed": 42,
+  "length": 64,
+  "trials": 100,
+  "rows": [
+    {
+      "d_k": 8,
+      "scaled": false,
+      "score_mean": -0.013268795795738697,
+      "score_std_mean": 2.8607394695281982,
+      "normalized_entropy_mean": 0.4914083778858185,
+      "normalized_entropy_std": 0.18762001395225525,
+      "jacobian_sensitivity_mean": 0.2949228584766388,
+      "jacobian_sensitivity_std": 0.07673152536153793
+    },
+    {
+      "d_k": 8,
+      "scaled": true,
+      "score_mean": -0.0006783427088521421,
+      "score_std_mean": 1.003865361213684,
+      "normalized_entropy_mean": 0.8867843747138977,
+      "normalized_entropy_std": 0.0645642951130867,
+      "jacobian_sensitivity_mean": 0.1822783350944519,
+      "jacobian_sensitivity_std": 0.032498594373464584
+    },
+    {
+      "d_k": 32,
+      "scaled": false,
+      "score_mean": -0.021152084693312645,
+      "score_std_mean": 5.659292697906494,
+      "normalized_entropy_mean": 0.21454520523548126,
+      "normalized_entropy_std": 0.14028103649616241,
+      "jacobian_sensitivity_mean": 0.2605953514575958,
+      "jacobian_sensitivity_std": 0.1511646807193756
+    },
+    {
+      "d_k": 32,
+      "scaled": true,
+      "score_mean": -0.0013236748054623604,
+      "score_std_mean": 0.9960633516311646,
+      "normalized_entropy_mean": 0.8865682482719421,
+      "normalized_entropy_std": 0.04316200688481331,
+      "jacobian_sensitivity_mean": 0.18321861326694489,
+      "jacobian_sensitivity_std": 0.02375035732984543
+    },
+    {
+      "d_k": 128,
+      "scaled": false,
+      "score_mean": 0.031171774491667747,
+      "score_std_mean": 11.299869537353516,
+      "normalized_entropy_mean": 0.09357419610023499,
+      "normalized_entropy_std": 0.09948919713497162,
+      "jacobian_sensitivity_mean": 0.16354766488075256,
+      "jacobian_sensitivity_std": 0.1725640445947647
+    },
+    {
+      "d_k": 128,
+      "scaled": true,
+      "score_mean": 0.001473372569307685,
+      "score_std_mean": 1.000988483428955,
+      "normalized_entropy_mean": 0.8855812549591064,
+      "normalized_entropy_std": 0.035807862877845764,
+      "jacobian_sensitivity_mean": 0.1837417185306549,
+      "jacobian_sensitivity_std": 0.020877135917544365
+    },
+    {
+      "d_k": 512,
+      "scaled": false,
+      "score_mean": 0.012151921167969704,
+      "score_std_mean": 22.653301239013672,
+      "normalized_entropy_mean": 0.04424421489238739,
+      "normalized_entropy_std": 0.06912809610366821,
+      "jacobian_sensitivity_mean": 0.09425855427980423,
+      "jacobian_sensitivity_std": 0.1536155343055725
+    },
+    {
+      "d_k": 512,
+      "scaled": true,
+      "score_mean": -0.0011613107053562999,
+      "score_std_mean": 0.9995731711387634,
+      "normalized_entropy_mean": 0.8864705562591553,
+      "normalized_entropy_std": 0.031712211668491364,
+      "jacobian_sensitivity_mean": 0.18336935341358185,
+      "jacobian_sensitivity_std": 0.019329097121953964
+    }
+  ],
+  "finite_difference": {
+    "epsilon": 1e-05,
+    "finite_difference": 0.021610150268226463,
+    "jacobian_times_u": 0.021610157985387506,
+    "absolute_error": 7.717161042142262e-09
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "run_id": "R3",
+  "params": 845671,
+  "best_epoch": 3,
+  "best_val_acc": 0.0182,
+  "test": {
+    "loss": 4.677018187713623,
+    "ce": 4.677018187713623,
+    "accuracy": 0.019,
+    "rgb_mse": null,
+    "n": 5000
+  },
+  "device": "cpu",
+  "micro_batch_size": 16,
+  "accumulation_steps": 4,
+  "optimizer_steps_per_epoch": 2
+}

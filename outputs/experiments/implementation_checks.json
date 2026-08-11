@@ -1,0 +1,136 @@
+{
+  "rows": [
+    {
+      "model": "SmallCNN",
+      "model_input": [
+        2,
+        3,
+        64,
+        64
+      ],
+      "pooled_feature": [
+        2,
+        256
+      ],
+      "first_representation": [
+        2,
+        64,
+        32,
+        32
+      ],
+      "intermediate_representation": [
+        2,
+        256,
+        8,
+        8
+      ],
+      "output": [
+        2,
+        100
+      ]
+    },
+    {
+      "model": "Patch-LSTM",
+      "model_input": [
+        2,
+        3,
+        64,
+        64
+      ],
+      "pooled_feature": [
+        2,
+        128
+      ],
+      "first_representation": [
+        2,
+        256,
+        48
+      ],
+      "intermediate_representation": [
+        2,
+        256,
+        128
+      ],
+      "output": [
+        2,
+        100
+      ],
+      "patch_index_to_coord_first_last": [
+        [
+          0,
+          0
+        ],
+        [
+          15,
+          15
+        ]
+      ]
+    },
+    {
+      "model": "MiniViT-Full",
+      "model_input": [
+        2,
+        3,
+        64,
+        64
+      ],
+      "pooled_feature": [
+        2,
+        128
+      ],
+      "first_representation": [
+        2,
+        256,
+        128
+      ],
+      "intermediate_representation": [
+        2,
+        256,
+        128
+      ],
+      "output": {
+        "class": [
+          2,
+          100
+        ],
+        "rgb": [
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "model": "MiniViT-Window",
+      "model_input": [
+        2,
+        3,
+        64,
+        64
+      ],
+      "pooled_feature": [
+        2,
+        128
+      ],
+      "first_representation": [
+        2,
+        256,
+        128
+      ],
+      "intermediate_representation": [
+        2,
+        256,
+        128
+      ],
+      "output": {
+        "class": [
+          2,
+          100
+        ],
+        "rgb": [
+          2,
+          3
+        ]
+      }
+    }
+  ]
+}

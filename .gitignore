@@ -1,0 +1,27 @@
+﻿__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+*.pyc
+*.pyo
+*.pyd
+
+# Local data and large artifacts
+data/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Caches and secrets
+.env
+.env.*
+huggingface/
+.cache/
+
+# Raw logs / external trackers
+*.log
+wandb/

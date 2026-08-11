@@ -1,0 +1,5 @@
+{
+  "steps_run": 50,
+  "train128_acc": 1.0,
+  "device": "cpu"
+}

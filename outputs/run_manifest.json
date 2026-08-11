@@ -1,0 +1,34 @@
+﻿{
+  "local_environment": {
+    "os": "Windows",
+    "torch": "2.13.0+cpu",
+    "cuda_available": false,
+    "note": "KMP_DUPLICATE_LIB_OK=TRUE was required for this Anaconda/OpenMP environment."
+  },
+  "split": {
+    "configuration": "lite",
+    "classes": 100,
+    "train": 45000,
+    "validation": 5000,
+    "test": 5000,
+    "sha256": "1cb97ea048322c7e7625cd43b895f9425ae60b6999b19eb3ab063f206ae76bce"
+  },
+  "completed_commands": [
+    "pytest tests -q",
+    "python -m experiments.scaling_analysis",
+    "python -m experiments.benchmark_attention",
+    "python -m experiments.compare_backbones --classes 100",
+    "python -m experiments.overfit_sanity --steps 300"
+  ],
+  "completed_results": {
+    "pytest": "14 passed",
+    "overfit_sanity": "train128_acc=1.0 at 50 steps",
+    "scaling_json": "outputs/experiments/scaling.json",
+    "benchmark_json": "outputs/experiments/benchmark.json",
+    "implementation_checks": "outputs/experiments/implementation_checks.json"
+  },
+  "not_completed_locally": [
+    "R1-R9 full 20-epoch training matrix",
+    "CLIP zero-shot evaluation due HuggingFace connection reset"
+  ]
+}

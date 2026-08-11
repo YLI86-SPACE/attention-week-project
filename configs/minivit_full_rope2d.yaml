@@ -1,0 +1,15 @@
+﻿run_id: R8
+model: minivit
+position: rope2d
+attention: full
+lambda_rgb: 0
+seed: 42
+data_config: lite
+epochs: 20
+effective_batch_size: 64
+micro_batch_size: 16
+num_workers: 2
+learning_rate: 0.0003
+weight_decay: 0.05
+grad_clip_norm: 1.0
+amp: true
