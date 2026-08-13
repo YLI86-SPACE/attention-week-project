@@ -1,0 +1,17 @@
+{
+  "run_id": "R6",
+  "params": 845671,
+  "best_epoch": 19,
+  "best_val_acc": 0.3914,
+  "test": {
+    "loss": 2.3656741802215575,
+    "ce": 2.3656741802215575,
+    "accuracy": 0.4008,
+    "rgb_mse": null,
+    "n": 5000
+  },
+  "device": "cuda",
+  "micro_batch_size": 16,
+  "accumulation_steps": 4,
+  "optimizer_steps_per_epoch": 703
+}

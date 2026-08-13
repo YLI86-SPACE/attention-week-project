@@ -1,0 +1,17 @@
+{
+  "run_id": "R8",
+  "params": 812903,
+  "best_epoch": 18,
+  "best_val_acc": 0.432,
+  "test": {
+    "loss": 2.2292265371322633,
+    "ce": 2.2292265371322633,
+    "accuracy": 0.4452,
+    "rgb_mse": null,
+    "n": 5000
+  },
+  "device": "cuda",
+  "micro_batch_size": 16,
+  "accumulation_steps": 4,
+  "optimizer_steps_per_epoch": 703
+}

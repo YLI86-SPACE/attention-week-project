@@ -1,0 +1,55 @@
+{
+  "rows": [
+    {
+      "variant": "NoPos",
+      "run_id": "R7",
+      "params": 812903,
+      "best_val_acc": 0.3838,
+      "test_acc": 0.3988,
+      "test_acc_diff_vs_abspos": -0.0334,
+      "train_time_per_epoch_sec": 35.7118021800037,
+      "status": "ok"
+    },
+    {
+      "variant": "AbsPos",
+      "run_id": "R3",
+      "params": 845671,
+      "best_val_acc": 0.423,
+      "test_acc": 0.4322,
+      "test_acc_diff_vs_abspos": 0.0,
+      "train_time_per_epoch_sec": 42.0416634149988,
+      "status": "ok"
+    },
+    {
+      "variant": "Full_seed43",
+      "run_id": "R5",
+      "params": 845671,
+      "best_val_acc": 0.423,
+      "test_acc": 0.4358,
+      "test_acc_diff_vs_abspos": 0.0036000000000000476,
+      "train_time_per_epoch_sec": 30.4393236949995,
+      "status": "ok"
+    },
+    {
+      "variant": "Window_seed43",
+      "run_id": "R6",
+      "params": 845671,
+      "best_val_acc": 0.3914,
+      "test_acc": 0.4008,
+      "test_acc_diff_vs_abspos": -0.03140000000000004,
+      "train_time_per_epoch_sec": 33.50531879999918,
+      "status": "ok"
+    },
+    {
+      "variant": "RoPE2D",
+      "run_id": "R8",
+      "params": 812903,
+      "best_val_acc": 0.432,
+      "test_acc": 0.4452,
+      "test_acc_diff_vs_abspos": 0.013000000000000012,
+      "train_time_per_epoch_sec": 60.2262051800019,
+      "status": "ok"
+    }
+  ],
+  "note": "AbsPos reuses R3 by project protocol."
+}

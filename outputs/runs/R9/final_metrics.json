@@ -1,0 +1,17 @@
+{
+  "run_id": "R9",
+  "params": 845671,
+  "best_epoch": 17,
+  "best_val_acc": 0.4236,
+  "test": {
+    "loss": 2.266142353439331,
+    "ce": 2.2608290851593016,
+    "accuracy": 0.4346,
+    "rgb_mse": 0.0005313266197685152,
+    "n": 5000
+  },
+  "device": "cuda",
+  "micro_batch_size": 16,
+  "accumulation_steps": 4,
+  "optimizer_steps_per_epoch": 703
+}

@@ -1,0 +1,11 @@
+{
+  "status": "sample_manifest_created",
+  "sample_count": 64,
+  "sample_file": "splits/perturbation_samples_seed42.txt",
+  "patch_coord": [
+    6,
+    6
+  ],
+  "replacement": "train split RGB channel mean, computed before normalization",
+  "note": "Full perturbation metrics require trained R1-R4 best-validation checkpoints. This file records the deterministic sample set now."
+}

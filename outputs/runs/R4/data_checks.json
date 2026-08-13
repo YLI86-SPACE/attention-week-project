@@ -1,0 +1,13 @@
+{
+  "classes": 100,
+  "train": 45000,
+  "train_min_per_class": 450,
+  "train_max_per_class": 450,
+  "validation": 5000,
+  "validation_min_per_class": 50,
+  "validation_max_per_class": 50,
+  "test": 5000,
+  "test_min_per_class": 50,
+  "test_max_per_class": 50,
+  "sha256": "1cb97ea048322c7e7625cd43b895f9425ae60b6999b19eb3ab063f206ae76bce"
+}

@@ -1,0 +1,17 @@
+{
+  "run_id": "R4",
+  "params": 845671,
+  "best_epoch": 20,
+  "best_val_acc": 0.3958,
+  "test": {
+    "loss": 2.3667985500335695,
+    "ce": 2.3667985500335695,
+    "accuracy": 0.3978,
+    "rgb_mse": null,
+    "n": 5000
+  },
+  "device": "cuda",
+  "micro_batch_size": 16,
+  "accumulation_steps": 4,
+  "optimizer_steps_per_epoch": 703
+}
