@@ -87,7 +87,7 @@ python -m src.train --config configs\minivit_full_multitask.yaml --data-root dat
 python -m experiments.clip_zero_shot --data-root data\tiny-imagenet-200 --split-json splits\split_seed42.json --batch-size 128
 ```
 
-Local HuggingFace download failed with a remote connection reset. Run this command in Colab or another network that can access `openai/clip-vit-base-patch32`.
+The repository now has a local HuggingFace cache and this command completed on the held-out test with the `attention-gpu` environment.
 
 ## Final Submission Template
 
