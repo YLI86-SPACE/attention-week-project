@@ -18,17 +18,20 @@
     "python -m experiments.scaling_analysis",
     "python -m experiments.benchmark_attention",
     "python -m experiments.compare_backbones --classes 100",
-    "python -m experiments.overfit_sanity --steps 300"
+    "python -m experiments.overfit_sanity --steps 300",
+    "conda run -n attention-gpu python -m src.train --config configs/minivit_full_seed43.yaml --data-root data/tiny-imagenet-200 --split-json splits/split_seed42.json --output-dir outputs/runs",
+    "conda run -n attention-gpu python -m src.train --config configs/minivit_window_seed43.yaml --data-root data/tiny-imagenet-200 --split-json splits/split_seed42.json --output-dir outputs/runs"
   ],
   "completed_results": {
     "pytest": "14 passed",
     "overfit_sanity": "train128_acc=1.0 at 50 steps",
     "scaling_json": "outputs/experiments/scaling.json",
     "benchmark_json": "outputs/experiments/benchmark.json",
-    "implementation_checks": "outputs/experiments/implementation_checks.json"
+    "implementation_checks": "outputs/experiments/implementation_checks.json",
+    "r5": "outputs/runs/R5/final_metrics.json",
+    "r6": "outputs/runs/R6/final_metrics.json"
   },
   "not_completed_locally": [
-    "R1-R9 full 20-epoch training matrix",
-    "CLIP zero-shot evaluation due HuggingFace connection reset"
+    "None"
   ]
 }

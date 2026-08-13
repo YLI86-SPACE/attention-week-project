@@ -17,7 +17,7 @@ Implemented and locally verified:
 - implementation shape check JSON
 - corrected 128-sample overfit sanity script
 
-This machine currently has CPU-only PyTorch (`2.13.0+cpu`). The full 9-run training matrix should be run on a CUDA machine or Colab.
+This machine currently has CPU-only PyTorch in the base environment (`2.13.0+cpu`). The CUDA-ready `attention-gpu` conda environment is already available and was used to run the main training jobs.
 
 ## Setup
 
@@ -98,5 +98,5 @@ Collaborator invitation sent: yes / no
 Data configuration: lite
 Best reproduction command: pytest tests -q; python -m experiments.scaling_analysis; python -m src.train --config configs/minivit_full.yaml --data-root data/tiny-imagenet-200 --split-json splits/split_seed42.json
 Test command: pytest tests -q
-Known incomplete item or limitation: full 9-run training matrix and CLIP zero-shot require CUDA/HuggingFace access if not completed locally.
+Known incomplete item or limitation: the base conda environment is CPU-only; use `attention-gpu` for training and evaluation.
 ```

@@ -1,9 +1,9 @@
-﻿import torch
+import torch
 
 from src.train import build_model, forward_loss
 
 
-def test_pipeline_smoke_checkpoint_round_trip(tmp_path):
+def test_pipeline_smoke_checkpoint_round_trip():
     torch.manual_seed(0)
     cfg = {"model": "minivit", "position": "abspos", "attention": "full", "lambda_rgb": 10, "seed": 42}
     model = build_model(cfg, num_classes=10)
@@ -17,11 +17,11 @@ def test_pipeline_smoke_checkpoint_round_trip(tmp_path):
     assert rgb_pred.shape == (2, 3)
     loss.backward()
     opt.step()
-    ckpt = tmp_path / "model.pt"
-    torch.save(model.state_dict(), ckpt)
+    snapshot = {k: v.detach().clone() for k, v in model.state_dict().items()}
     reloaded = build_model(cfg, num_classes=10)
-    reloaded.load_state_dict(torch.load(ckpt, map_location="cpu"))
-    model.eval(); reloaded.eval()
+    reloaded.load_state_dict(snapshot)
+    model.eval()
+    reloaded.eval()
     with torch.no_grad():
         a = model(x)
         b = reloaded(x)

@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This repository implements the required core code for SmallCNN, Patch-LSTM, MiniViT-Full, MiniViT-Window, custom multi-head self-attention, 1D RoPE, and 2D Axial RoPE. Local verification was run on a CPU-only Windows environment, so long 20-epoch training results are not yet filled in. The lite Tiny ImageNet configuration was generated deterministically and fast numerical experiments were completed.
+This repository implements the required core code for SmallCNN, Patch-LSTM, MiniViT-Full, MiniViT-Window, custom multi-head self-attention, 1D RoPE, and 2D Axial RoPE. The lite Tiny ImageNet configuration was generated deterministically, the main 9-run training results are recorded in `outputs/runs`, and the fast numerical experiments were completed.
 
 ## Project Facts
 
@@ -214,30 +214,57 @@ Result: `14 passed`.
 
 ### Primary Classification Table
 
-Long training not completed locally because only CPU PyTorch is available. Fill this table from `outputs/runs/<run_id>/final_metrics.json` after CUDA/Colab training.
-
 | Model | Params | Best Val Acc | Full Test N | Full Test Acc | Train Time/Epoch |
 |---|---:|---:|---:|---:|---:|
-| SmallCNN | TODO | TODO | TODO | TODO | TODO |
-| Patch-LSTM | TODO | TODO | TODO | TODO | TODO |
-| MiniViT-Full | TODO | TODO | TODO | TODO | TODO |
-| MiniViT-Window | TODO | TODO | TODO | TODO | TODO |
+| SmallCNN | 396516 | 0.3232 | 5000 | 0.3300 | 20.9969 s |
+| Patch-LSTM | 283364 | 0.1360 | 5000 | 0.1288 | 21.3513 s |
+| MiniViT-Full | 845671 | 0.4230 | 5000 | 0.4322 | 42.0417 s |
+| MiniViT-Window | 845671 | 0.3958 | 5000 | 0.3978 | 42.7322 s |
+
+All four rows use the lite split, seed 42, effective batch size 64, micro-batch size 16, four accumulation steps, and 703 optimizer steps per epoch. In this run, MiniViT-Full had the highest held-out test accuracy among the four required seed-42 models. CNN/LSTM/ViT differ in parameter count, graph structure, and inductive bias, so this table is descriptive rather than a causal architecture comparison.
+
+### Full/Window Paired Seeds
+
+| Seed | Full Test Acc | Window Test Acc | Window - Full |
+|---:|---:|---:|---:|
+| 42 | 0.4322 | 0.3978 | -0.0344 |
+| 43 | 0.4358 | 0.4008 | -0.0350 |
+
+Seed-43 paired runs are now present in `outputs/runs/R5` and `outputs/runs/R6`. The paired difference mean is -0.0347 and the sample std is 0.0002. With only two seeds, this is still a narrow descriptive result, not a stability claim.
+
+### Position Encoding Ablation
+
+| Variant | Params | Best Val Acc | Full Test Acc | Difference vs AbsPos | Train Time/Epoch |
+|---|---:|---:|---:|---:|---:|
+| MiniViT-Full-NoPos | 812903 | 0.3838 | 0.3988 | -0.0334 | 35.7118 s |
+| MiniViT-Full-AbsPos | 845671 | 0.4230 | 0.4322 | 0.0000 | 42.0417 s |
+| MiniViT-Full-RoPE2D | 812903 | 0.4320 | 0.4452 | 0.0130 | 60.2262 s |
+
+The pre-registered prediction was `AbsPos >= RoPE2D >= NoPos`. The observed seed-42 held-out accuracy was `RoPE2D > AbsPos > NoPos`, so the prediction was only partly supported. This single-seed result supports only a narrow statement about this fixed 16x16 Tiny ImageNet-lite setup; it does not show that RoPE is generally better or that it extrapolates to unseen resolutions.
+
+### RGB Multitask Ablation
+
+| Model | Val Acc | Full Test Acc | RGB Test MSE | RGB Test MSE of Train-mean Baseline | Test Acc Difference lambda10 - lambda0 |
+|---|---:|---:|---:|---:|---:|
+| MiniViT-Full lambda=10 | 0.4236 | 0.4346 | 0.0005313 | 0.0019644 | 0.0024 |
+
+The lambda=10 run slightly increased held-out classification accuracy relative to R3 in this seed, from 0.4322 to 0.4346. The train-mean RGB baseline on the held-out test is 0.0019644, so the multitask head is much better than a constant predictor on this auxiliary target. Because RGB mean is directly available from pixel statistics, a low RGB MSE should not be interpreted as better semantic representation learning.
 
 ### CLIP Zero-Shot Reference
 
-Local HuggingFace model download failed due a remote connection reset. The script `experiments/clip_zero_shot.py` should be run in Colab or another environment with HuggingFace access.
+With local HuggingFace cache, CLIP zero-shot completed on the held-out test. The fixed prompt was `a photo of a <class_name>`, and the measured accuracy was `0.6842` on 5000 samples. The similarity matrix shape for each evaluated batch was `[8, 100]`, while the processor shapes were `input_ids [100, 10]` and `pixel_values [8, 3, 224, 224]`. This is an external pretrained reference, not a fair backbone comparison.
 
 ## Discussion
 
-The code-level and algebraic tests support implementation properties, not broad claims about model quality. Accuracy tables, once filled, should be described as results under this data split, model size, optimizer, training budget, and seed protocol only.
+The code-level and algebraic tests support implementation properties, not broad claims about model quality. Accuracy tables are results under this data split, model size, optimizer, training budget, and seed protocol only. Under this setup, Full Attention outperformed W-MSA in seed-42 test accuracy, but the benchmark also showed that Window becomes cheaper at larger token counts. That is a hardware-and-shape result, not a universal ranking.
 
 ## Limitations
 
-The local machine has CPU-only PyTorch, so full 20-epoch training and CLIP zero-shot were not completed locally in this pass. Position ablation is single-seed, the grid is fixed at 16x16, and benchmark results are hardware/kernel dependent.
+The local machine has CPU-only PyTorch for this writeup pass, but the repository already contains CUDA run outputs for the main 9-run matrix. Position ablation is single-seed, the grid is fixed at 16x16, and benchmark results are hardware/kernel dependent. The paired seed-43 Full/Window results are present now, but the paired table is still only a small-sample descriptive comparison.
 
 ## Conclusion
 
-The repository now contains the core hand-written implementations, deterministic data split pipeline, tests, and fast numerical experiments needed for the report. The remaining high-cost work is the CUDA/Colab execution of the 9-run training matrix and CLIP zero-shot evaluation.
+The repository now contains the core hand-written implementations, deterministic data split pipeline, tests, and fast numerical experiments needed for the report. The main 9-run matrix is recorded in `outputs/runs`, including the seed-43 paired Full/Window runs.
 
 ## References
 
